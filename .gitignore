@@ -1,0 +1,14 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# Legacy venv
+.venv/
+
+# Claude autogeneration
+tmp/attachements/
+tmp/
+
+.pytest_cache/
+__pycache__/
+*.pyc

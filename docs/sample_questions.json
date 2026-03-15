@@ -1,0 +1,87 @@
+{
+  "questions": [
+    {
+      "text": "What is the approximate height of Mount Everest?",
+      "question_type": "interval",
+      "answer": 8849,
+      "units": "meters",
+      "category": "geography",
+      "log_scale": false,
+      "answer_range_min": 5000,
+      "answer_range_max": 12000
+    },
+    {
+      "text": "What year was the Declaration of Independence signed?",
+      "question_type": "interval",
+      "answer": 1776,
+      "units": "",
+      "category": "history",
+      "log_scale": false,
+      "answer_range_min": 1700,
+      "answer_range_max": 1850
+    },
+    {
+      "text": "How many US states are there?",
+      "question_type": "interval",
+      "answer": 50,
+      "units": "states",
+      "category": "geography",
+      "log_scale": false,
+      "answer_range_min": 30,
+      "answer_range_max": 70
+    },
+    {
+      "text": "Is the Amazon River longer than the Nile River?",
+      "question_type": "binary",
+      "answer": 0,
+      "binary_answer": false,
+      "units": "",
+      "category": "geography",
+      "log_scale": false,
+      "answer_range_min": 0,
+      "answer_range_max": 1
+    },
+    {
+      "text": "Does sound travel faster in water than in air?",
+      "question_type": "binary",
+      "answer": 1,
+      "binary_answer": true,
+      "units": "",
+      "category": "science",
+      "log_scale": false,
+      "answer_range_min": 0,
+      "answer_range_max": 1
+    },
+    {
+      "text": "What is the approximate population of Tokyo metropolitan area?",
+      "question_type": "interval",
+      "answer": 37,
+      "units": "million people",
+      "category": "geography",
+      "log_scale": false,
+      "answer_range_min": 10,
+      "answer_range_max": 60
+    },
+    {
+      "text": "How many chromosomes do humans have?",
+      "question_type": "interval",
+      "answer": 46,
+      "units": "chromosomes",
+      "category": "science",
+      "log_scale": false,
+      "answer_range_min": 20,
+      "answer_range_max": 80
+    },
+    {
+      "text": "Is Venus hotter than Mercury despite being farther from the Sun?",
+      "question_type": "binary",
+      "answer": 1,
+      "binary_answer": true,
+      "units": "",
+      "category": "science",
+      "log_scale": false,
+      "answer_range_min": 0,
+      "answer_range_max": 1
+    }
+  ]
+}

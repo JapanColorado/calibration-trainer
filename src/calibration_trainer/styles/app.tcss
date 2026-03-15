@@ -1,0 +1,350 @@
+/* Main application styles */
+
+Screen {
+    background: $surface;
+}
+
+/* Dashboard styles */
+#dashboard-content {
+    width: 80%;
+    max-width: 60;
+    height: auto;
+    padding: 1;
+}
+
+#title {
+    text-align: center;
+    text-style: bold;
+    color: $primary;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#subtitle {
+    text-align: center;
+    color: $text-muted;
+    width: 100%;
+}
+
+#stats-summary {
+    text-align: center;
+    background: $surface-darken-1;
+    padding: 1;
+    margin: 1 0;
+}
+
+#dashboard-content Button {
+    width: 100%;
+    margin-top: 1;
+}
+
+/* Training screen styles */
+#training-container {
+    align: center middle;
+    width: 100%;
+    height: 100%;
+}
+
+#training-content {
+    width: 90%;
+    max-width: 80;
+    height: auto;
+    padding: 2;
+}
+
+#progress-label {
+    text-align: center;
+    width: 100%;
+}
+
+#progress-pct {
+    text-align: center;
+    width: 100%;
+    color: $text-muted;
+}
+
+#question-container {
+    width: 100%;
+    height: auto;
+    padding: 1;
+}
+
+/* Binary input widget styles */
+#binary-input-container {
+    width: 100%;
+    padding: 1;
+}
+
+#question-text {
+    text-style: bold;
+    margin-bottom: 1;
+    width: 100%;
+}
+
+#input-row {
+    width: 100%;
+    height: 3;
+}
+
+#input-row Input {
+    width: 20;
+}
+
+#percent-label {
+    padding: 1;
+}
+
+#quick-buttons {
+    width: 100%;
+}
+
+#quick-buttons Button {
+    margin-right: 1;
+}
+
+/* Interval input widget styles */
+#interval-input-container {
+    width: 100%;
+    padding: 1;
+}
+
+#bounds-row {
+    width: 100%;
+}
+
+#lower-container, #upper-container {
+    width: 50%;
+    padding-right: 1;
+}
+
+#lower-container Input, #upper-container Input {
+    width: 100%;
+}
+
+#help-text {
+    color: $text-muted;
+    margin-top: 1;
+}
+
+/* Modal screen centering */
+TrainingSetupModal, SessionSummaryModal, ResultModal, ResetConfirmModal {
+    align: center middle;
+}
+
+/* Modal styles */
+#training-setup-modal {
+    width: 55;
+    max-height: 90%;
+    padding: 1 2;
+    background: $surface;
+    border: solid $primary;
+    overflow-y: auto;
+}
+
+#reset-confirm-modal {
+    width: 50;
+    max-height: 80%;
+    padding: 2;
+    background: $surface;
+    border: solid $error;
+    overflow-y: auto;
+}
+
+#session-summary-modal, #result-modal {
+    width: 50;
+    max-height: 80%;
+    padding: 2;
+    background: $surface;
+    border: solid $primary;
+    overflow-y: auto;
+}
+
+#modal-title {
+    text-style: bold;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#training-setup-modal Label {
+    margin-top: 1;
+}
+
+#training-setup-modal Select {
+    width: 100%;
+}
+
+#training-setup-modal RadioSet {
+    width: 100%;
+}
+
+#training-setup-modal SelectionList {
+    width: 100%;
+    height: 8;
+}
+
+#modal-buttons {
+    width: 100%;
+    align: center middle;
+    margin-top: 2;
+    height: 3;
+}
+
+#modal-buttons Button {
+    margin: 0 1;
+}
+
+/* Result modal styles */
+#result-status {
+    text-style: bold;
+    text-align: center;
+    width: 100%;
+}
+
+#result-status.correct {
+    color: $success;
+}
+
+#result-status.incorrect {
+    color: $error;
+}
+
+/* Stats screen styles */
+#stats-content {
+    width: 100%;
+    height: 100%;
+    padding: 1 2;
+}
+
+#stats-title {
+    text-style: bold;
+    text-align: center;
+    width: 100%;
+}
+
+#overall-stats {
+    padding: 0 1;
+    margin: 1 0;
+}
+
+#binary-section-title, #interval-section-title {
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+/* Calibration panel: chart + table side by side */
+.cal-panel {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+}
+
+/* When narrow, stack vertically */
+.cal-panel.narrow {
+    layout: vertical;
+}
+
+#binary-chart, #interval-chart {
+    width: 2fr;
+    min-width: 40;
+    height: 16;
+    background: $surface-darken-1;
+}
+
+.cal-panel.narrow #binary-chart,
+.cal-panel.narrow #interval-chart {
+    width: 100%;
+}
+
+/* Right-hand side: table + legend stacked vertically */
+.cal-table-side {
+    width: 1fr;
+    height: auto;
+    padding: 1 1;
+}
+
+.cal-panel.narrow .cal-table-side {
+    width: 100%;
+}
+
+#binary-table, #interval-table {
+    width: 100%;
+}
+
+.cal-legend {
+    color: $text-muted;
+    margin-top: 1;
+}
+
+/* Settings screen styles */
+SettingsScreen VerticalScroll {
+    align-horizontal: center;
+}
+
+#settings-content {
+    width: 90%;
+    max-width: 70;
+    padding: 1 2;
+}
+
+#settings-title {
+    text-style: bold;
+    text-align: center;
+    width: 100%;
+}
+
+#settings-content Select {
+    width: 100%;
+}
+
+#settings-content .separator {
+    margin: 1 0 0 0;
+    color: $text-muted;
+}
+
+#import-row {
+    width: 100%;
+    height: 3;
+}
+
+#import-row Input {
+    width: 1fr;
+}
+
+#import-row Button {
+    width: 12;
+    margin-left: 1;
+}
+
+#import-status {
+    color: $text-muted;
+    margin-top: 1;
+}
+
+#reset-row {
+    width: 100%;
+    height: 3;
+}
+
+#reset-description {
+    color: $text-muted;
+    padding: 1;
+}
+
+#settings-buttons {
+    margin-top: 1;
+}
+
+#settings-buttons Button {
+    margin-right: 1;
+}
+
+/* Input error state */
+Input.error {
+    border: solid $error;
+}
+
+/* General utility */
+.hidden {
+    display: none;
+}
