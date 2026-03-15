@@ -86,7 +86,9 @@ class Repository:
 
     def get_question(self, question_id: str) -> Question | None:
         """Get a question by ID."""
-        cursor = self.conn.execute("SELECT * FROM questions WHERE id = ?", (question_id,))
+        cursor = self.conn.execute(
+            "SELECT * FROM questions WHERE id = ?", (question_id,)
+        )
         row = cursor.fetchone()
         if row:
             return self._row_to_question(row)
@@ -127,11 +129,14 @@ class Repository:
         cursor = self.conn.execute(query, params)
         return [self._row_to_question(row) for row in cursor.fetchall()]
 
-    def get_question_count(self, question_type: Literal["binary", "interval"] | None = None) -> int:
+    def get_question_count(
+        self, question_type: Literal["binary", "interval"] | None = None
+    ) -> int:
         """Get the count of questions."""
         if question_type:
             cursor = self.conn.execute(
-                "SELECT COUNT(*) FROM questions WHERE question_type = ?", (question_type,)
+                "SELECT COUNT(*) FROM questions WHERE question_type = ?",
+                (question_type,),
             )
         else:
             cursor = self.conn.execute("SELECT COUNT(*) FROM questions")
@@ -174,10 +179,20 @@ class Repository:
 
     def update_calibration(self, response: Response) -> None:
         """Update calibration tracking tables based on a response."""
-        if response.question_type == "binary" and response.probability_estimate is not None:
-            self._update_binary_calibration(response.probability_estimate, response.is_correct)
-        elif response.question_type == "interval" and response.confidence_level is not None:
-            self._update_interval_calibration(response.confidence_level, response.is_correct)
+        if (
+            response.question_type == "binary"
+            and response.probability_estimate is not None
+        ):
+            self._update_binary_calibration(
+                response.probability_estimate, response.is_correct
+            )
+        elif (
+            response.question_type == "interval"
+            and response.confidence_level is not None
+        ):
+            self._update_interval_calibration(
+                response.confidence_level, response.is_correct
+            )
 
     def _update_binary_calibration(self, probability: float, outcome: bool) -> None:
         """Update binary calibration tracking."""
@@ -200,7 +215,9 @@ class Repository:
         )
         self.conn.commit()
 
-    def _update_interval_calibration(self, confidence_level: int, is_correct: bool) -> None:
+    def _update_interval_calibration(
+        self, confidence_level: int, is_correct: bool
+    ) -> None:
         """Update interval calibration tracking."""
         self.conn.execute(
             """UPDATE interval_calibration
@@ -254,7 +271,9 @@ class Repository:
             "total_score": row["total_score"] or 0,
         }
 
-    def get_overall_stats(self, question_type: Literal["binary", "interval"] | None = None) -> dict:
+    def get_overall_stats(
+        self, question_type: Literal["binary", "interval"] | None = None
+    ) -> dict:
         """Get overall statistics."""
         query = "SELECT COUNT(*) as total, SUM(is_correct) as correct, AVG(score) as avg_score FROM responses"
         params: list = []
@@ -271,7 +290,7 @@ class Repository:
             "avg_score": row["avg_score"] or 0,
         }
 
-    def get_overall_stats_grouped(self) -> dict[str, dict]:
+    def get_overall_stats_grouped(self) -> dict[str, dict[str, int | float]]:
         """Get overall statistics grouped by question type in a single query.
 
         Returns a dict with keys 'overall', 'binary', and 'interval', each
@@ -279,15 +298,20 @@ class Repository:
         """
         cursor = self.conn.execute(
             """SELECT question_type,
-                      COUNT(*) as total,
-                      SUM(is_correct) as correct,
-                      AVG(score) as avg_score,
-                      SUM(score) as total_score
-               FROM responses
-               GROUP BY question_type"""
+                          COUNT(*) as total,
+                          SUM(is_correct) as correct,
+                          AVG(score) as avg_score,
+                          SUM(score) as total_score
+                   FROM responses
+                   GROUP BY question_type"""
         )
-        empty = {"total": 0, "correct": 0, "avg_score": 0, "total_score": 0}
-        result = {
+        empty: dict[str, int | float] = {
+            "total": 0,
+            "correct": 0,
+            "avg_score": 0.0,
+            "total_score": 0.0,
+        }
+        result: dict[str, dict[str, int | float]] = {
             "overall": dict(empty),
             "binary": dict(empty),
             "interval": dict(empty),
@@ -300,8 +324,8 @@ class Repository:
             qtype = row["question_type"]
             count = row["total"] or 0
             correct = row["correct"] or 0
-            avg = row["avg_score"] or 0
-            points = row["total_score"] or 0
+            avg = row["avg_score"] or 0.0
+            points = row["total_score"] or 0.0
             if qtype in result:
                 result[qtype] = {
                     "total": count,
@@ -316,7 +340,7 @@ class Repository:
         result["overall"] = {
             "total": total_count,
             "correct": total_correct,
-            "avg_score": total_score_sum / total_count if total_count > 0 else 0,
+            "avg_score": total_score_sum / total_count if total_count > 0 else 0.0,
             "total_score": total_points,
         }
         return result
