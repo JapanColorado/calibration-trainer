@@ -126,6 +126,10 @@ pixi run -e dev pytest tests/test_scoring.py
 pixi shell -e dev
 ```
 
+## How this was built
+
+Built with [Claude Code](https://claude.com/claude-code).
+
 ## License
 
-MIT
+[MIT](LICENSE)
